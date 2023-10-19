@@ -9,13 +9,17 @@ function clock() {
     min = (min < 10) ? '0' + min : min
     sec = (sec < 10) ? '0' + sec : sec
     
-    if (hour <= 12){
+     if(hour >= 0 && hour <= 4){
+        res.innerText = 'Boa madrugada.'
+    }
+
+    else if (hour <= 12) {
         res.innerText = 'Bom dia.'
     }
-    else if (hour <= 18){
+    else if (hour <= 18) {
         res.innerText = 'Boa tarde'
     }
-    else{
+    else {
         res.innerText = 'Boa noite'
     }
     
