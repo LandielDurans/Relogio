@@ -14,13 +14,13 @@ function clock() {
     }
 
     else if (hour <= 12) {
-        res.innerText = 'Bom dia.'
+        res.innerText = 'Bom dia'
     }
     else if (hour <= 18) {
-        res.innerText = 'Boa tarde.'
+        res.innerText = 'Boa tarde'
     }
     else {
-        res.innerText = 'Boa noite.'
+        res.innerText = 'Boa noite'
     }
     var time = `${hour}:${min}:${sec}`
     document.getElementById('myclock').innerText = time
