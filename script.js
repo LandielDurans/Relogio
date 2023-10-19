@@ -8,8 +8,8 @@ function clock() {
     hour = (hour < 10) ? '0' + hour : hour
     min = (min < 10) ? '0' + min : min
     sec = (sec < 10) ? '0' + sec : sec
-    
-     if(hour >= 0 && hour <= 4){
+
+    if (hour >= 0 && hour <= 4) {
         res.innerText = 'Boa madrugada.'
     }
 
@@ -17,12 +17,11 @@ function clock() {
         res.innerText = 'Bom dia.'
     }
     else if (hour <= 18) {
-        res.innerText = 'Boa tarde'
+        res.innerText = 'Boa tarde.'
     }
     else {
-        res.innerText = 'Boa noite'
+        res.innerText = 'Boa noite.'
     }
-    
     var time = `${hour}:${min}:${sec}`
     document.getElementById('myclock').innerText = time
     setTimeout(clock, 1000)
@@ -32,8 +31,36 @@ clock();
 
 var toggle = document.getElementById('toggle_checkbox')
 
-function darkmode(){
+function darkmode() {
     var bg = document.body
-    bg.classList.toggle('lightmode')
-    bg.style.transition = '0.5s ease all'
+    bg.style.transition = '0.2s ease all'
+
+    horatual = new Date().getHours()
+
+    if (toggle.checked) {
+        bg.classList.add('darkmode');
+        bg.classList.remove('lightmode');
+    } else {
+        bg.classList.remove('darkmode');
+        bg.classList.add('lightmode');
+    }
+
 }
+
+function autoDarkMode() {
+    var horaAtual = new Date().getHours()
+
+    if (horaAtual >= 18 || horaAtual < 6) {
+        toggle.checked = true
+        darkmode()
+    } else {
+        toggle.checked = false
+        darkmode()
+    }
+}
+
+toggle.addEventListener('change', darkmode)
+
+autoDarkMode()
+
+setInterval(autoDarkMode, 3600000)
